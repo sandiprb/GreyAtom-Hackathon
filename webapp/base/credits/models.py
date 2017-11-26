@@ -29,6 +29,7 @@ class CustomerData(models.Model):
     pay_amt_june = models.IntegerField()
     pay_amt_may = models.IntegerField()
     pay_amt_april = models.IntegerField()
+    default = models.IntegerField()
 
     def __unicode__(self):
         return 'Customer ID: {}'.format(self.custmer_id)

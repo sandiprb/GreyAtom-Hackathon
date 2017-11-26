@@ -26,9 +26,9 @@ def show_customer_data(request):
         data = CustomerData.objects.get(custmer_id=cust_id)
         try:
             context['data'] = model_to_dict(data)
+            context['is_default'] = context['data']['default']
             return render(request, 'customer_data.html', context)
         except CustomerData.DoesNotExist:
             return HttpResponseRedirect('/select-customer/')
-
 
     return HttpResponseRedirect('/select-customer/')
