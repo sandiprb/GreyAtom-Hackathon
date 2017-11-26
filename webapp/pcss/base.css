@@ -4,4 +4,5 @@ body {
 	font-family: $baseFont;
 	color: $base;
 	font-size: 14px;
+	padding-top: 100px;
 }

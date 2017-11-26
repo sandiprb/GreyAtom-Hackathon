@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% load static %} {% block body %}
+<section class="container-fluid section1 section-f1">
+    <div class="container">
+        <div class="row">
+            <div class="offset-sm-3 col-sm-6">
+
+                {% if is_default == 1 %}
+                <div class="card text-white bg-danger">
+                        <div class="card-body">
+                          <blockquote class="card-blockquote">
+                           <h3> This customer might default in next month</h3>
+                          </blockquote>
+                        </div>
+                      </div>
+                {% else %}
+                <div class="card text-white bg-success">
+                        <div class="card-body">
+                          <blockquote class="card-blockquote">
+                           <h3> This customer might not default in next month</h3>
+                          </blockquote>
+                        </div>
+                      </div>
+                {% endif %}
+                          <br>
+                          <br>
+
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th> Key </th>
+                            <th> Value </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in data.items %}
+                        {% if not key == "default" %}
+                        <tr>
+                            <td> {{ key }} </td>
+                            <td> {{ value }} </td>
+                        </tr>
+                        {% endif %}
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock body %} {% block js %} {% endblock js %}
