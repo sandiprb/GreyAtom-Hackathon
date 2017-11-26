@@ -1,9 +1,11 @@
 from django.conf.urls import url
 from django.contrib import admin
 
-from django.views.generic import TemplateView # TEMP
+from credits import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', TemplateView.as_view(template_name='base.html'))  # TEMP
+    url(r'^$', views.index, name='index_view'),
+    url(r'^select-customer/$', views.select_customer, name='select_customer'),
+    url(r'^customer-data/$', views.show_customer_data, name='show_customer_data'),
 ]

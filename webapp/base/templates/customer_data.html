@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% load static %} {% block body %}
+<section class="container-fluid section1 section-f1">
+    <div class="container">
+        <div class="row">
+            <div class="offset-sm-3 col-sm-6">
+
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th> Key </th>
+                            <th> Value </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in data.items %}
+                        <tr>
+                            <td> {{ key }} </td>
+                            <td> {{ value }} </td>
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+{% endblock body %} {% block js %} {% endblock js %}

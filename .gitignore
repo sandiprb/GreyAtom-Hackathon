@@ -1,3 +1,8 @@
+webapp/assets
+webapp/static/css
+*.pyc
 **/*.log
 **/*.DS_Store
+webapp/base/local_settings.py
 webapp/node_modules/
+webpapp/static/css
