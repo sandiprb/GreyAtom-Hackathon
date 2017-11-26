@@ -20,7 +20,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 HTML_MINIFY = False
-COMPRESS_ENABLED = True
+COMPRESS_ENABLED = False
 COMPRESS_OFFLINE = False
 COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',  'compressor.filters.cssmin.CSSMinFilter']
 
@@ -74,19 +74,26 @@ WSGI_APPLICATION = 'wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or
+#         # 'oracle'.
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         # Or path to database file if using sqlite3.
+#         'NAME': 'hackathon',
+#         'USER': 'postgres',                      # Not used with sqlite3.
+#         'PASSWORD': '',                  # Not used with sqlite3.
+#         # Set to empty string for localhost. Not used with sqlite3.
+#         'HOST': 'localhost',
+#         # Set to empty string for default. Not used with sqlite3.
+#         'PORT': '5433'
+#     }
+# }
+
 DATABASES = {
     'default': {
-        # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or
-        # 'oracle'.
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        # Or path to database file if using sqlite3.
-        'NAME': 'starter_temp',
-        'USER': 'postgres',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        # Set to empty string for localhost. Not used with sqlite3.
-        'HOST': 'localhost',
-        # Set to empty string for default. Not used with sqlite3.
-        'PORT': '5433'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'hackathon',
     }
 }
 
@@ -134,9 +141,17 @@ STATIC_ROOT = os.path.join(PROJECT_DIR, '../assets/')
 MEDIA_ROOT = os.path.join(PROJECT_DIR, '../media/')
 MEDIA_URL = '/media/'
 
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     # other finders..
     'compressor.finders.CompressorFinder',
 )
+
+
+# NOTE: This must be last few lines of this file.
+try:
+    from local_settings import *  # noqa
+except ImportError:
+    pass
